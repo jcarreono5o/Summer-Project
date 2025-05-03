@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-public class Task1 {
+public class GetStations {
     private static String[] args;
     public static void main(String[] args) throws FileNotFoundException {
-        Task1.args = args;
+        GetStations.args = args;
 
         Scanner sc = new Scanner(System.in);
 
