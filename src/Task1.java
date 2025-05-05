@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public class Task1 {
     private static String[] args;
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException
+    {
         Task1.args = args;
 
         Scanner sc = new Scanner(System.in);
@@ -27,7 +28,7 @@ do {
     destination2 = sc.nextLine();
     try {
         while (scan.hasNext()) {
-            //print all line to test    System.out.println(scan.nextLine());
+            System.out.println(scan.nextLine());
             String[] values = scan.nextLine().split(",");
             String station = values[0].trim();
 
