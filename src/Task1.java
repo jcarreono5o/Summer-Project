@@ -28,7 +28,7 @@ do {
     destination2 = sc.nextLine();
     try {
         while (scan.hasNext()) {
-            System.out.println(scan.nextLine());
+            //print all line to test    System.out.println(scan.nextLine());
             String[] values = scan.nextLine().split(",");
             String station = values[0].trim();
 
