@@ -59,6 +59,7 @@ public class Destinations {
         if (checkDestination1True && checkDestination2True)
         {
             System.out.println("You are getting a train from " + destination1 + " to " + destination2);
+            return new String[]{destination1, destination2};
             sc.close();
         }
     }

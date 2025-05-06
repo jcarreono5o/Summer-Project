@@ -35,7 +35,7 @@ do {
 
             if (station.equals(destination1)) {
                 checkDestination1True = true;
-                System.out.println("Found to-station: " + station);
+                System.out.println("Found from-station: " + station);
             }
             if (station.equals(destination2)) {
                 checkDestination2True = true;
