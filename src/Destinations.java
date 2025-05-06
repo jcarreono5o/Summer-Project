@@ -9,7 +9,7 @@ public class Destinations {
         FilePath = filePath;
     }
 
-    public void GetDestinations() {
+    public String[] GetDestinations() {
 
         File file = new File(FilePath);
 
@@ -60,8 +60,8 @@ public class Destinations {
         {
             System.out.println("You are getting a train from " + destination1 + " to " + destination2);
             return new String[]{destination1, destination2};
-            sc.close();
         }
+        return null;
     }
 
     }
