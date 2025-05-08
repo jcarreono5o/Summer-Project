@@ -19,24 +19,62 @@ public class Dijkstra {
     public void dijkstra(List<List<Node>>adjacencyList, int source)
     {
         //initialise adjacency list
+        this.AdjacencyList = adjacencyList;
         //set all distances of node to infinite
         //first/source node is 0 distance, put in queue
-        //check empty queue
-        //remove min node from queue
-        //add node with finished distance
+        for(int i=0; i<Verticies; i++)
+        {
+            ShortDistance[i] = Integer.MAX_VALUE;
+        }
+        pq.add(new Node(source, 0));
+        ShortDistance[source] = 0;
 
+        while(settledNodes.size() != Verticies)
+        {
+            if (pq.isEmpty())
+                return;
+            //check empty queue
+
+            int u = pq.remove().node;
+            //remove min node from queue
+
+            if (settledNodes.contains(u))
+                continue;
+            //add node with finished distance
+
+
+            settledNodes.add(u);
+
+            adjacentNodes(u);
+        }
 
 
 
     }
 
-    private void adjacentNodes()
+    private void adjacentNodes(int u)
     {
         //set distances
+        int edgeDistance = -1;
+        int newDistance = -1;
         //get neighbours
-        //check if settled
-        //if new distance is less than old
-        //add current node to queue
+        for (int i=0; i<AdjacencyList.get(u).size(); i++)
+        {
+            Node v = AdjacencyList.get(u).get(i);
+
+            //check if settled
+            if (!settledNodes.contains(v.node))
+            {
+                edgeDistance = v.cost;
+                newDistance = ShortDistance[u] + edgeDistance;
+
+                //if new distance is less than old
+                if (newDistance < ShortDistance[v.node])
+                    ShortDistance[v.node] = newDistance;
+                //add current node to queue
+                pq.add(new Node(v.node, newDistance));
+            }
+        }
     }
 
     //for the custom sorting order
