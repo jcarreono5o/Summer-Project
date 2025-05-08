@@ -16,12 +16,27 @@ public class Dijkstra {
         pq = new PriorityQueue<Node>(Verticies, new Node());
     }
 
-    public void dijkstra() {
+    public void dijkstra(List<List<Node>>adjacencyList, int source)
+    {
+        //initialise adjacency list
+        //set all distances of node to infinite
+        //first/source node is 0 distance, put in queue
+        //check empty queue
+        //remove min node from queue
+        //add node with finished distance
+
+
+
 
     }
 
-    private void adjacentNodes() {
-
+    private void adjacentNodes()
+    {
+        //set distances
+        //get neighbours
+        //check if settled
+        //if new distance is less than old
+        //add current node to queue
     }
 
     //for the custom sorting order
