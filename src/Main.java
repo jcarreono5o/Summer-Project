@@ -26,5 +26,11 @@ public class Main {
         //from station is source
         int source = 0;
 
+        List <List<Node>> adjacencyList = new ArrayList<List<Node>>();
+        for (int i = 0; i < verticies; i++)
+        {
+            adjacencyList.add(new ArrayList<Node>());
+        }
+
     }
 }
