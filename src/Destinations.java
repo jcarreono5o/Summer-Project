@@ -17,7 +17,7 @@ public class Destinations {
 
         String destination1;
         String destination2;
-
+        int lineCount = -1;
         boolean checkDestination1True;
         boolean checkDestination2True;
         do {
@@ -34,6 +34,7 @@ public class Destinations {
                 while (scanFile.hasNext()) {
                     String[] values = scanFile.nextLine().split(",");
                     String station = values[0].trim();
+                    lineCount += 1;
 
                     if (station.equals(destination1))
                     {
@@ -53,7 +54,8 @@ public class Destinations {
         while (!checkDestination1True || !checkDestination2True);
 
         System.out.println("You are getting a train from " + destination1 + " to " + destination2);
-        return new String[]{destination1, destination2};
+        System.out.println(lineCount);
+        return new String[]{destination1, destination2, Integer.toString(lineCount)};
     }
 
     }
