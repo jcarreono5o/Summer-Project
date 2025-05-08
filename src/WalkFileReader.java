@@ -10,13 +10,13 @@ public class WalkFileReader {
     public static void main(String[] args) throws FileNotFoundException
     {
         String line = "";
-        File file = new File("X:\\Lancaster\\Year1Academic\\SCCx1A\\Summer project\\summer_Project_2_39439453\\src\\Metrolink_times_linecolour.csv");
+        File file = new File("X:\\Lancaster\\Year1Academic\\SCCx1A\\Summer_project\\summer_Project_2_39439453\\src\\Metrolink_times_linecolour.csv");
         Scanner scan = new Scanner(file);
 
         while(scan.hasNext())
         {
         //print all line to test    System.out.println(scan.nextLine());
-            String[] values = scan.nextLine().split(",");
+            String[] values = scan.nextLine().split("\n");
             System.out.println(values[0]);
         }
     }
