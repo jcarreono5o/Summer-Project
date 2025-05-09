@@ -15,14 +15,14 @@ public class Main {
         String lineCount = destinations[2];
 
         DataParser dataParser = new DataParser(FromDestination, ToDestination, file);
-
+        dataParser.parse();
         //Deploy Dijkstra
         //set as number of total unique stations in a file
         int verticies = IntLineCount;
         //change 100
-
         //from station is source
         int source = 0;
+
 
         List <List<Node>> adjacencyList = new ArrayList<List<Node>>();
         for (int i = 0; i < verticies; i++)
@@ -30,6 +30,10 @@ public class Main {
             adjacencyList.add(new ArrayList<Node>());
         }
 
+        for (int i = 0; i == verticies; i++)
+        {
+            adjacencyList.get().add(new Node(, ));
+        }
         Dijkstra dpq = new Dijkstra(verticies);
         dpq.dijkstra(adjacencyList, source);
 
