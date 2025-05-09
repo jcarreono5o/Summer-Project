@@ -1,61 +1,55 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Set;
 
-public class Destinations {
-    private String FilePath;
+public class Destinations
+{
+    private String file;
+    private final Set<String> stations;
+    private String destination1;
+    private String destination2;
+    private int lineCount = -1;
+    private boolean checkDestination1True;
+    private boolean checkDestination2True;
 
-    public Destinations(String filePath)
+    public Destinations(Set<String> stations)
     {
-        FilePath = filePath;
+        this.stations = stations;
+        this.file = file;
     }
 
-    public String[] GetDestinations()
+    public String[] getDestinations()
     {
 
         Scanner scanInput = new Scanner(System.in);
+        String from; //DESTINATION 1 AND 2 variables from destination bugfix, refactored name watch for missing
+        String to;
+        checkDestination1True = false;
+        checkDestination2True = false;
 
-        String destination1;
-        String destination2;
-        int lineCount = -1;
-        boolean checkDestination1True;
-        boolean checkDestination2True;
-        do {
-            checkDestination1True = false;
-            checkDestination2True = false;
-
+        while (true)
+        {
             System.out.print("Enter current station: ");
-            destination1 = scanInput.nextLine();
+            from = scanInput.nextLine().trim();
             System.out.print("Enter target station: ");
-            destination2 = scanInput.nextLine();
+            to = scanInput.nextLine().trim();
+            lineCount += 1;
 
-            File file = new File(FilePath);
-            try (Scanner scanFile = new Scanner(file)) {
-                while (scanFile.hasNext()) {
-                    String[] values = scanFile.nextLine().split(",");
-                    String station = values[0].trim();
-                    lineCount += 1;
+            if (!stations.contains(from))
+            {
+                System.out.println("ERROR NO STATION: " + from);
+                continue;
 
-                    if (station.equals(destination1))
-                    {
-                        checkDestination1True = true;
-                        System.out.println("Destination 1: " + station);
-                    }
-                    if (station.equals(destination2)) {
-                        checkDestination2True = true;
-                        System.out.println("Destination 2: " + station);
-                    }
-
-                }
-            } catch (Exception e) {
-                System.out.println(e);
             }
+            if (!stations.contains(to))
+            {
+                System.out.println("ERROR NO STATION: " + to);
+                continue;
         }
-        while (!checkDestination1True || !checkDestination2True);
-
-        System.out.println("You are getting a train from " + destination1 + " to " + destination2);
-        System.out.println(lineCount);
-        return new String[]{destination1, destination2, Integer.toString(lineCount)};
+        break;
     }
-
+        System.out.println("You are getting a train from " + from + " to " + to);
+        return new String[]{from, to};
     }
+}

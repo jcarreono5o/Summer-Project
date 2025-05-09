@@ -4,30 +4,36 @@ import java.io.IOException;
 import java.util.*;
 
 public class DataParser {
-    private String file;
-    private String delimiter = ",";
-    private String line;
-    private List<String[]> result = new ArrayList<>();
+    private final String file;
+    private final String delimiter = ",";
 
-    // Constructor that only takes the file path as input
-    public DataParser(String file) {
+    public DataParser(String file)
+    {
         this.file = file;
     }
 
-    // Parse the entire file and return a List of all routes
-    public List<String[]> parseAllLines() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while ((line = reader.readLine()) != null) {
+    public List<String[]> parseAllLines()
+    {
+        List<String[]> result = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file)))
+        {
+            String line;
+            boolean skimTopFile = false;
+            while ((line = reader.readLine()) != null)
+            {
+                if (!skimTopFile)
+                {
+                    skimTopFile = true;
+                    continue;
+                }
                 String[] values = line.split(delimiter);
-                result.add(values);  // Add each line (as a string array) to the result list
+                if (values.length < 4) continue;//perhaps add constant for lab file
+                result.add(values);
             }
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (IOException e)
+        {
+            System.err.println("ERROR, CHECK LAB FILE IS CORRECT: " + e.getMessage());
         }
-
         return result;
     }
-
-    // This method could also be used if you want to search for specific stations
-    // For now, it just returns everything as an array of string arrays (one for each line)
 }
