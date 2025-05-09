@@ -10,6 +10,11 @@ public class DataParser {
     private String destination2;
     private String file;
 
+    private boolean found = false;
+    private String nextStation;
+    private String stationLine;
+    private String travelTimeString;
+
     private List<List<String>> MetroList = new ArrayList<>();
     private String line;
     private String delimiter = ",";
@@ -39,5 +44,27 @@ public class DataParser {
         {
             System.out.println(FromToLineTime);
         }
+    }
+
+    public String[] searchFromDestination()
+    {
+        for(List<String> FromToLineTime : MetroList)
+        {
+            if (FromToLineTime.contains(destination1))
+            {
+                found = true;
+                nextStation = FromToLineTime.get(1);
+                stationLine = FromToLineTime.get(2);
+                travelTimeString = FromToLineTime.get(3);
+
+
+            }
+        }
+        if (!found)
+        {
+            System.out.println("no file found ERROR");
+        }
+        return new String[]{nextStation, stationLine, travelTimeString};
+
     }
 }
