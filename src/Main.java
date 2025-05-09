@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
-        Destinations Destinations = new Destinations("X:\\Lancaster\\Year1Academic\\SCCx1A\\Summer_project\\summer_Project_2_39439453\\src\\Metrolink_times_linecolour.csv");
+        String file = "X:\\Lancaster\\Year1Academic\\SCCx1A\\Summer_project\\summer_Project_2_39439453\\src\\Metrolink_times_linecolour.csv";
+        Destinations Destinations = new Destinations(file);
         String[] destinations = Destinations.GetDestinations();
         String FromDestination = destinations[0];
         String ToDestination = destinations[1];
@@ -13,10 +14,7 @@ public class Main {
         int IntLineCount = Integer.parseInt(destinations[2]);
         String lineCount = destinations[2];
 
-        Route route = new Route(FromDestination, ToDestination, "X:\\Lancaster\\Year1Academic\\SCCx1A\\Summer_project\\summer_Project_2_39439453\\src\\Metrolink_times_linecolour.csv");
-        route.findRoute();
-
-
+        DataParser dataParser = new DataParser(FromDestination, ToDestination, file);
 
         //Deploy Dijkstra
         //set as number of total unique stations in a file
@@ -31,6 +29,10 @@ public class Main {
         {
             adjacencyList.add(new ArrayList<Node>());
         }
+
+        Dijkstra dpq = new Dijkstra(verticies);
+        dpq.dijkstra(adjacencyList, source);
+
 
     }
 }
