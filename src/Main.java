@@ -108,7 +108,7 @@ public class Main {
         {
             System.out.println("Total traveltime= " + totalCost + "minutes");
         }
-        
+
         System.out.println("Number of line changes= " + Math.max(0, changes));
     }
 }
