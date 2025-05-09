@@ -24,16 +24,15 @@ public class Main {
         int source = 0;
 
 
+
         List <List<Node>> adjacencyList = new ArrayList<List<Node>>();
         for (int i = 0; i < verticies; i++)
         {
             adjacencyList.add(new ArrayList<Node>());
         }
 
-        for (int i = 0; i == verticies; i++)
-        {
-            adjacencyList.get().add(new Node(, ));
-        }
+        adjacencyList.get(destinationBase).add(new Node(destinationAdjacent, distance));
+
         Dijkstra dpq = new Dijkstra(verticies);
         dpq.dijkstra(adjacencyList, source);
 
