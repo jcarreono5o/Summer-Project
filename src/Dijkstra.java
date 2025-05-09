@@ -14,7 +14,7 @@ public class Dijkstra {
         this.verticies = Verticies;
         shortDistance = new int[Verticies];
         settledNodes = new HashSet<Integer>();
-        pq = new PriorityQueue<Node>(Verticies, new Node());
+        pq = new PriorityQueue<Node>(Verticies, new Node(Verticies, new Node()));
     }
 
     public void dijkstra(List<List<Node>>adjacencyList, int source)
@@ -80,16 +80,8 @@ public class Dijkstra {
             }
         }
     }
+    }
 
-
-
-
-    //for the custom sorting order
-    //orders nodes for sorting
-    //what is bigger is put further front of queue else equal
-
-
-}
 
 
 
